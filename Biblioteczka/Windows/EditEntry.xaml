@@ -1,0 +1,118 @@
+﻿<Window x:Class="Biblioteczka.Windows.EditEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteczka.Windows"
+        mc:Ignorable="d"
+        Title="Modyfikacja wpisu w biblioteczce" MinHeight="550" MinWidth="900" Height="550" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.RowSpan="2" Background="LightYellow"/>
+        <Label Grid.Row="0" Content="Modyfikuj wpis w biblioteczce" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" Foreground="#FF287F49"/>
+        <Label Grid.Row="1" Content="Zdjęcie okładki oraz elementy oznaczone gwiazdką są wymagane!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="275"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="imageGrid" Grid.Column="0" Background="LightCyan">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Nie wczytano zdjęcia okładki!" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Image x:Name="bookImage" Grid.Row="0" Margin="8"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Content="Wybierz zdjęcie okładki" Width="200" Margin="7" Click="SelectImageButtonClick"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="AliceBlue"/>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="AntiqueWhite"/>
+                <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="AliceBlue"/>
+                <Grid Grid.Row="3" Grid.ColumnSpan="2" Background="AntiqueWhite"/>
+                <Grid Grid.Row="4" Grid.ColumnSpan="2" Background="AliceBlue"/>
+                <Grid Grid.Row="5" Grid.ColumnSpan="2" Background="AntiqueWhite"/>
+                <Grid Grid.Row="6" Grid.ColumnSpan="2" Background="AliceBlue"/>
+
+                <Label Grid.Column="0" Grid.Row="0" Content="*Tytuł:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="1" Content="*Autor:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="2" Content="*Gatunek:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="3" Content="*Opis:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="4" Content="Link do e-booka:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="5" Content="Link do audiobooka:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="6" Content="Link do adaptacji:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBox x:Name="bookTitle" Grid.Column="1" Grid.Row="0" Margin="7" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="bookAuthor" Grid.Column="1" Grid.Row="1" Margin="7" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="bookGenre" Grid.Column="1" Grid.Row="2" Margin="7"/>
+                <TextBox x:Name="bookDescription" Grid.Column="1" Grid.Row="3" Margin="7" TextWrapping="Wrap"/>
+                <Grid Grid.Column="1" Grid.Row="4" Margin="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="bookEbook" Grid.Column="0" VerticalContentAlignment="Center"/>
+                    <Button x:Name="ebookFindButton" Grid.Column="1" Content="Szukaj w Internecie" Click="ebookFindButton_Click" />
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="5" Margin="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="bookAudiobook" Grid.Column="0" VerticalContentAlignment="Center"/>
+                    <Button x:Name="audiobookFindButton" Grid.Column="1" Content="Szukaj w Internecie" Click="audiobookFindButton_Click" />
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="6" Margin="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="bookMovie" Grid.Column="0" VerticalContentAlignment="Center"/>
+                    <Button x:Name="movieFindButton" Grid.Column="1" Content="Szukaj w Internecie" Click="movieFindButton_Click" />
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3" Background="LightGreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Content="Usuń wpis" Width="200" Margin="7" Foreground="Red" FontWeight="Bold"/>
+            <Button Grid.Column="2" Content="Zapisz" Width="200" Margin="7"/>
+            <Button Grid.Column="3" Content="Anuluj" Width="200" Margin="7" Click="CancelButtonClick"/>
+        </Grid>
+    </Grid>
+</Window>

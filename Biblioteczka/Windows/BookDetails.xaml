@@ -1,0 +1,82 @@
+﻿<Window x:Class="Biblioteczka.Windows.BookDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteczka.Windows"
+        mc:Ignorable="d"
+        Title="Szczegóły książki" MinHeight="700" MinWidth="1000" Height="700" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="LightYellow"/>
+        <Label Grid.Row="0" Content="Szczegóły książki " HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" Foreground="#FF287F49"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="LightCyan"/>
+            <Label Content="Brak zdjęcia okładki!" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold" />
+            <Image Grid.Column="0" Margin="8"/>
+
+            <Grid Grid.Column="1" Background="#FFFBD3C0"/>
+            <Grid Grid.Column="1" Margin="0 10 0 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Tytuł książki:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <Label Grid.Row="1" Content="Pan Tadeusz" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="36" Foreground="Red" FontWeight="Bold"/>
+                <Label Grid.Row="2" Content="Autor książki:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <Label Grid.Row="3" Content="Adam Mickiewicz" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Red" FontSize="24" FontWeight="Bold"/>
+                <Label Grid.Row="4" Content="Książka z gatunku:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <Label Grid.Row="5" Content="Lektura" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Blue" FontSize="24" FontWeight="Bold"/>
+                <Label Grid.Row="6" Content="Opis książki:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <ScrollViewer Grid.Row="7">
+                    <TextBlock Text="Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim." TextWrapping="Wrap" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                </ScrollViewer>
+
+                <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="buttonEbook" Grid.Column="0" Content="Dostępny E-book!" Margin="20" Click="buttonEbook_Click"/>
+                    <Button x:Name="buttonAudiobook" Grid.Column="1" Content="Dostępny Audiobook!" Margin="20" Click="buttonAudiobook_Click"/>
+                    <Button x:Name="buttonFilm" Grid.Column="2" Content="Dostępna adaptacja filmowa!" Margin="20" Click="buttonFilm_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="2" Background="LightGreen">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Content="Usuń wpis" Width="200" Margin="7" Foreground="Red" FontWeight="Bold"/>
+            <Button Grid.Column="2" Content="Edytuj dane" Width="200" Margin="7" Click="EditButtonClick"/>
+            <Button Grid.Column="3" Content="Wyjdź" Width="200" Margin="7" Click="CancelButtonClick"/>
+        </Grid>
+    </Grid>
+</Window>

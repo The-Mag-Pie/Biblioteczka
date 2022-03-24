@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Biblioteczka.CustomControls.BookEntry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Biblioteczka.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" Height="50" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="120"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1"/>
+        <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1"/>
+        <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1"/>
+        <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="1"/>
+        <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="1"/>
+
+        <Label x:Name="counterText" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label x:Name="authorText" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FF31BD31"/>
+        <Label x:Name="titleText" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFFF0003" FontWeight="Bold" FontSize="20"/>
+        <Label x:Name="categoryText" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Blue" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="buttonDetails" Grid.Column="4" Content="Szczegóły" Margin="10" Click="Button_Click"/>
+    </Grid>
+</UserControl>
