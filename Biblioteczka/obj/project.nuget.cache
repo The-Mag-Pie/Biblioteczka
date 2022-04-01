@@ -1,10 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "pSOmrc6H3sSE3qj776bSLfZyTGSL17yfMrKeLuJhp06yVNXfqt22JU7fS1RHLhlRurO6Nzgm7xyxrNfJ3nVA/Q==",
+  "dgSpecHash": "/cDhJDMNOJzV8tLSAfDNLNBW2Q3Flh2fqtoK/XwLanTkA9VFHiw8uGQPHyXAYDX6hX+OPUAJEfLupYxcd335Yg==",
   "success": true,
   "projectFilePath": "C:\\Users\\barte\\OneDrive - The Opole University of Technology\\Studia\\semestr_4\\Programowanie\\Biblioteczka\\Biblioteczka\\Biblioteczka.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\barte\\.nuget\\packages\\microsoft.web.webview2\\1.0.1150.38\\microsoft.web.webview2.1.0.1150.38.nupkg.sha512"
+    "C:\\Users\\barte\\.nuget\\packages\\microsoft.data.sqlite\\6.0.3\\microsoft.data.sqlite.6.0.3.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.3\\microsoft.data.sqlite.core.6.0.3.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\microsoft.web.webview2\\1.0.1150.38\\microsoft.web.webview2.1.0.1150.38.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.6\\sqlitepclraw.provider.e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
 }

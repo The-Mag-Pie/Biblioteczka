@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
 using Biblioteczka.CustomControls;
+using Microsoft.Data.Sqlite;
+using System.IO;
 
 namespace Biblioteczka.Windows
 {
@@ -25,7 +27,34 @@ namespace Biblioteczka.Windows
         {
             InitializeComponent();
 
+
+            string dbFilePath = Environment.CurrentDirectory + "\\Resources\\database.db";
+
+            SqliteConnection dbConn = new SqliteConnection($"Data Source={dbFilePath}");
+            dbConn.Open();
+            MessageBox.Show(dbConn.State.ToString());
+
+            SqliteCommand command = dbConn.CreateCommand();
+            command.CommandText = "SELECT *, (SELECT Name FROM Categories WHERE ID = B.Category_ID) AS Category_Name FROM Books B;";
+            SqliteDataReader reader = command.ExecuteReader();
+
             entryStackPanel.Children.Add(new BookEntry(0, true));
+            //int i = 1;
+            while (reader.Read())
+            {
+                MemoryStream stream = new MemoryStream((byte[])reader["Image"]);
+                stream.Seek(0, SeekOrigin.Begin);
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.EndInit();
+                //bookshelfImage.Source = image;
+                break;
+            }
+
+            dbConn.Close();
+
+            
             for (int i = 1; i <= 50; i++)
             {
                 entryStackPanel.Children.Add(new BookEntry(i));
