@@ -51,7 +51,7 @@
             </ComboBox>
 
             <Label Grid.Column="3" Content="Gatunek:" HorizontalAlignment="Right"/>
-            <ComboBox Grid.Column="4"/>
+            <ComboBox x:Name="categoryComboBox" Grid.Column="4"/>
 
             <Label Grid.Column="5" Content="Wyszukaj:" HorizontalAlignment="Right"/>
             <TextBox Grid.Column="6" VerticalContentAlignment="Center"/>

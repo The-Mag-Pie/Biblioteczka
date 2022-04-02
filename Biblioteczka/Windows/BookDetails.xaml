@@ -24,7 +24,7 @@
 
             <Grid Grid.Column="0" Background="LightCyan"/>
             <Label Content="Brak zdjęcia okładki!" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold" />
-            <Image Grid.Column="0" Margin="8"/>
+            <Image Grid.Column="0" Source="{Binding Image}" Margin="8"/>
 
             <Grid Grid.Column="1" Background="#FFFBD3C0"/>
             <Grid Grid.Column="1" Margin="0 10 0 10">
@@ -41,14 +41,14 @@
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Content="Tytuł książki:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                <Label Grid.Row="1" Content="Pan Tadeusz" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="36" Foreground="Red" FontWeight="Bold"/>
+                <Label Grid.Row="1" Content="{Binding Title}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="36" Foreground="Red" FontWeight="Bold"/>
                 <Label Grid.Row="2" Content="Autor książki:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                <Label Grid.Row="3" Content="Adam Mickiewicz" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Red" FontSize="24" FontWeight="Bold"/>
+                <Label Grid.Row="3" Content="{Binding Author}" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Red" FontSize="24" FontWeight="Bold"/>
                 <Label Grid.Row="4" Content="Książka z gatunku:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                <Label Grid.Row="5" Content="Lektura" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Blue" FontSize="24" FontWeight="Bold"/>
+                <Label Grid.Row="5" Content="{Binding CategoryName}" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Blue" FontSize="24" FontWeight="Bold"/>
                 <Label Grid.Row="6" Content="Opis książki:" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                 <ScrollViewer Grid.Row="7">
-                    <TextBlock Text="Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim.Pan Tadeusz, czyli ostatni zajazd na Litwie – poemat epicki Adama Mickiewicza wydany w dwóch tomach w 1834 w Paryżu przez Aleksandra Jełowickiego. Ta epopeja narodowa powstała w latach 1832–1834 w Paryżu. Składa się z dwunastu ksiąg pisanych wierszem, trzynastozgłoskowym aleksandrynem polskim." TextWrapping="Wrap" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 </ScrollViewer>
 
                 <Grid Grid.Row="8">

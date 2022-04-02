@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Biblioteczka.MVVM;
 
 namespace Biblioteczka.Windows
 {
@@ -19,9 +20,30 @@ namespace Biblioteczka.Windows
     /// </summary>
     public partial class BookDetails : Window
     {
-        public BookDetails()
+        BookViewModel viewModel;
+
+        public BookDetails(BookViewModel bookViewModel)
         {
             InitializeComponent();
+
+            viewModel = bookViewModel;
+            DataContext = viewModel;
+
+            if (viewModel.EbookLink == null)
+            {
+                buttonEbook.Content = "E-book niedostępny";
+                buttonEbook.IsEnabled = false;
+            }
+            if (viewModel.AudiobookLink == null)
+            {
+                buttonAudiobook.Content = "Audiobook niedostępny";
+                buttonAudiobook.IsEnabled = false;
+            }
+            if (viewModel.MovieLink == null)
+            {
+                buttonFilm.Content = "Adapacja filmowa niedostępna";
+                buttonFilm.IsEnabled = false;
+            }
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
@@ -36,17 +58,17 @@ namespace Biblioteczka.Windows
 
         private void buttonEbook_Click(object sender, RoutedEventArgs e)
         {
-            WebBrowserNoControls.CreateEbookWindow("Pan Tadeusz", "https://xd.pl");
+            WebBrowserNoControls.CreateEbookWindow(viewModel.Title, viewModel.EbookLink);
         }
 
         private void buttonAudiobook_Click(object sender, RoutedEventArgs e)
         {
-            WebBrowserNoControls.CreateAudiobookWindow("Pan Tadeusz", "https://itaka.pl");
+            WebBrowserNoControls.CreateAudiobookWindow(viewModel.Title, viewModel.AudiobookLink);
         }
 
         private void buttonFilm_Click(object sender, RoutedEventArgs e)
         {
-            WebBrowserNoControls.CreateFilmAdaptationWindow("Pan Tadeusz", "https://netflix.com");
+            WebBrowserNoControls.CreateFilmAdaptationWindow(viewModel.Title, viewModel.MovieLink);
         }
     }
 }

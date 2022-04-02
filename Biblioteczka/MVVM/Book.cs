@@ -9,17 +9,17 @@ namespace Biblioteczka.MVVM
 {
     public class Book
     {
-        private string _id;
+        private long _id;
         private string _title;
         private string _author;
         private string _description;
-        private string _ebookLink;
-        private string _audiobookLink;
-        private string _movieLink;
-        private BitmapImage _image;
+        private string? _ebookLink;
+        private string? _audiobookLink;
+        private string? _movieLink;
+        private BitmapImage? _image;
         private string _categoryName;
 
-        public string ID
+        public long ID
         {
             get { return _id; }
             set { _id = value; }
@@ -43,25 +43,25 @@ namespace Biblioteczka.MVVM
             set { _description = value; }
         }
 
-        public string EbookLink
+        public string? EbookLink
         {
             get { return _ebookLink; }
             set { _ebookLink = value; }
         }
 
-        public string AudiobookLink
+        public string? AudiobookLink
         {
             get { return _audiobookLink; }
             set { _audiobookLink = value; }
         }
 
-        public string MovieLink
+        public string? MovieLink
         {
             get { return _movieLink; }
             set { _movieLink = value; }
         }
 
-        public BitmapImage Image
+        public BitmapImage? Image
         {
             get { return _image; }
             set { _image = value; }

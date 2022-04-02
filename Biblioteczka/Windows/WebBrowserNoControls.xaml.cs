@@ -21,17 +21,38 @@ namespace Biblioteczka.Windows
     {
         public static void CreateAudiobookWindow(string bookTitle, string uri)
         {
-            (new WebBrowserNoControls(bookTitle + " - Audiobook", new Uri(uri))).Show();
+            try
+            {
+                (new WebBrowserNoControls(bookTitle + " - Audiobook", new Uri(uri))).Show();
+            }
+            catch (Exception ex) when (ex is ArgumentNullException || ex is UriFormatException)
+            {
+                MessageBox.Show("BŁĄD! Podano błędny link.");
+            }
         }
 
         public static void CreateEbookWindow(string bookTitle, string uri)
         {
-            (new WebBrowserNoControls(bookTitle + " - E-book", new Uri(uri))).Show();
+            try
+            {
+                (new WebBrowserNoControls(bookTitle + " - E-book", new Uri(uri))).Show();
+            }
+            catch (Exception ex) when (ex is ArgumentNullException || ex is UriFormatException)
+            {
+                MessageBox.Show("BŁĄD! Podano błędny link.");
+            }
         }
 
         public static void CreateFilmAdaptationWindow(string bookTitle, string uri)
         {
-            (new WebBrowserNoControls(bookTitle + " - Adaptacja filmowa", new Uri(uri))).Show();
+            try
+            {
+                (new WebBrowserNoControls(bookTitle + " - Adaptacja filmowa", new Uri(uri))).Show();
+            }
+            catch (Exception ex) when (ex is ArgumentNullException || ex is UriFormatException)
+            {
+                MessageBox.Show("BŁĄD! Podano błędny link.");
+            }
         }
 
         public WebBrowserNoControls(string title, Uri uri)

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Biblioteczka.Windows;
+using Biblioteczka.MVVM;
 
 namespace Biblioteczka.CustomControls
 {
@@ -21,9 +22,14 @@ namespace Biblioteczka.CustomControls
     /// </summary>
     public partial class BookEntry : UserControl
     {
-        public BookEntry(int counter, bool header = false)
+        BookViewModel viewModel;
+
+        public BookEntry(int counter, BookViewModel bookViewModel, bool header = false)
         {
             InitializeComponent();
+
+            viewModel = bookViewModel;
+            DataContext = viewModel;
 
             if (header)
             {
@@ -52,15 +58,12 @@ namespace Biblioteczka.CustomControls
             else
             {
                 counterText.Content = counter;
-                authorText.Content = "Adam Mickiewicz";
-                titleText.Content = "Pan Tadeusz";
-                categoryText.Content = "Lektura";
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (new BookDetails()).ShowDialog();
+            (new BookDetails(viewModel)).ShowDialog();
         }
     }
 }
