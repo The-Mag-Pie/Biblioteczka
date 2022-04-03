@@ -81,7 +81,6 @@ namespace Biblioteczka.Windows
                 image.StreamSource = stream;
                 image.EndInit();
 
-                //bookImage.Source = new BitmapImage(new Uri(ofd.FileName));
                 viewModel.Image = image;
             }
         }
@@ -105,6 +104,12 @@ namespace Biblioteczka.Windows
         {
             mainViewModel.Update(viewModel);
             Close();
+        }
+
+        private void bookCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bookCategory.SelectedItem != null)
+                viewModel.CategoryName = bookCategory.SelectedItem.ToString();
         }
     }
 }

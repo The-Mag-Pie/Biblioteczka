@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 using Biblioteczka.Database;
 
@@ -141,15 +142,34 @@ namespace Biblioteczka.MVVM
 
         public void Update(BookViewModel editedViewModel)
         {
-            Title = editedViewModel.Title;
-            Author = editedViewModel.Author;
-            Description = editedViewModel.Description;
-            EbookLink = editedViewModel.EbookLink;
-            AudiobookLink = editedViewModel.AudiobookLink;
-            MovieLink = editedViewModel.MovieLink;
-            Image = editedViewModel.Image;
-            CategoryName = editedViewModel.CategoryName;
-            DbUpdate.UpdateBook(Book);
+            if (DbUpdate.UpdateBook(editedViewModel.Book))
+            {
+                MessageBox.Show("Dane książki zostały pomyślnie zaktualizowane.");
+                Title = editedViewModel.Title;
+                Author = editedViewModel.Author;
+                Description = editedViewModel.Description;
+                EbookLink = editedViewModel.EbookLink;
+                AudiobookLink = editedViewModel.AudiobookLink;
+                MovieLink = editedViewModel.MovieLink;
+                Image = editedViewModel.Image;
+                CategoryName = editedViewModel.CategoryName;
+            }
+            else
+            {
+                MessageBox.Show("Błąd podczas aktualizowania danych książki!");
+            }
+        }
+
+        public void Create()
+        {
+            if (DbCreate.CreateBook(Book))
+            {
+                MessageBox.Show("Nowa książka została utworzona pomyślnie.");
+            }
+            else
+            {
+                MessageBox.Show("Błąd podczas dodawania nowej książki!");
+            }
         }
     }
 }

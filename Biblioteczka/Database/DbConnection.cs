@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.Imaging;
 using Microsoft.Data.Sqlite;
 
 namespace Biblioteczka.Database
@@ -25,6 +27,14 @@ namespace Biblioteczka.Database
         public sealed class DbConnectionException : Exception
         {
             public DbConnectionException() : base("Error during connecting to database.") { }
+        }
+
+        public static void UploadImageBlob(BitmapImage image, SqliteConnection databaseConnection, long rowID)
+        {
+            using (SqliteBlob writeStream = new SqliteBlob(databaseConnection, "Books", "Image", rowID))
+            {
+                image.StreamSource.CopyTo(writeStream);
+            }
         }
     }
 }

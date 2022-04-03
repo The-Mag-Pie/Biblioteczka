@@ -29,13 +29,18 @@ namespace Biblioteczka.Windows
         {
             InitializeComponent();
 
+            UpdateBookList();
+            categoryComboBox.ItemsSource = DbRead.GetCategories();
+        }
+
+        private void UpdateBookList()
+        {
+            entryStackPanel.Children.Clear();
             int i = 0;
             foreach (Book book in DbRead.GetBooks())
             {
                 entryStackPanel.Children.Add(new BookEntry(++i, new BookViewModel(book)));
             }
-
-            categoryComboBox.ItemsSource = DbRead.GetCategories();
         }
 
         private void ExitButtonClick(object sender, RoutedEventArgs e)
@@ -51,6 +56,7 @@ namespace Biblioteczka.Windows
         private void CreateNewEntryButtonClick(object sender, RoutedEventArgs e)
         {
             (new NewEntry()).ShowDialog();
+            UpdateBookList();
         }
     }
 }

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using Biblioteczka.MVVM;
+using Biblioteczka.Database;
+using System.IO;
 
 namespace Biblioteczka.Windows
 {
@@ -20,9 +23,16 @@ namespace Biblioteczka.Windows
     /// </summary>
     public partial class NewEntry : Window
     {
+        BookViewModel viewModel;
+
         public NewEntry()
         {
             InitializeComponent();
+
+            viewModel = new BookViewModel(new Book());
+            DataContext = viewModel;
+
+            bookCategory.ItemsSource = DbRead.GetCategories();
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
@@ -36,23 +46,42 @@ namespace Biblioteczka.Windows
             ofd.Filter = "Pliki obrazów (*.BMP; *.JPG; *.PNG, *.GIF)| *.BMP; *.JPG; *.PNG; *.GIF";
             if (ofd.ShowDialog() == true)
             {
-                bookImage.Source = new BitmapImage(new Uri(ofd.FileName));
+                Stream stream = ofd.OpenFile();
+                stream.Seek(0, SeekOrigin.Begin);
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.EndInit();
+
+                viewModel.Image = image;
             }
         }
 
         private void ebookFindButton_Click(object sender, RoutedEventArgs e)
         {
-            bookEbook.Text = WebBrowserSelectLink.CreateEbookWindow("tytul ksiazki").SavedLink;
+            viewModel.EbookLink = WebBrowserSelectLink.CreateEbookWindow("tytul ksiazki").SavedLink;
         }
 
         private void audiobookFindButton_Click(object sender, RoutedEventArgs e)
         {
-            bookAudiobook.Text = WebBrowserSelectLink.CreateAudiobookWindow("tytul ksiazki").SavedLink;
+            viewModel.AudiobookLink = WebBrowserSelectLink.CreateAudiobookWindow("tytul ksiazki").SavedLink;
         }
 
         private void movieFindButton_Click(object sender, RoutedEventArgs e)
         {
-            bookMovie.Text = WebBrowserSelectLink.CreateFilmAdaptationWindow("tytul ksiazki").SavedLink;
+            viewModel.MovieLink = WebBrowserSelectLink.CreateFilmAdaptationWindow("tytul ksiazki").SavedLink;
+        }
+
+        private void AddButtonClick(object sender, RoutedEventArgs e)
+        {
+            viewModel.Create();
+            Close();
+        }
+
+        private void bookCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bookCategory.SelectedItem != null)
+                viewModel.CategoryName = bookCategory.SelectedItem.ToString();
         }
     }
 }

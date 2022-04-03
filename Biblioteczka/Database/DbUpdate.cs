@@ -12,8 +12,9 @@ namespace Biblioteczka.Database
 {
     public static class DbUpdate
     {
-        public static void UpdateBook(Book book)
+        public static bool UpdateBook(Book book)
         {
+            bool isUpdated = false;
             string sqlUpdateString =
                 $@"
                     UPDATE Books SET
@@ -28,10 +29,6 @@ namespace Biblioteczka.Database
                     WHERE ID = {book.ID};
                 ";
 
-            Clipboard.SetText(sqlUpdateString);
-
-            MessageBox.Show(sqlUpdateString);
-
             SqliteConnection dbConn = null;
 
             try
@@ -41,24 +38,24 @@ namespace Biblioteczka.Database
                 SqliteCommand cmd = dbConn.CreateCommand();
                 cmd.CommandText = sqlUpdateString;
 
-                MessageBox.Show(cmd.ExecuteNonQuery().ToString());
+                if (cmd.ExecuteNonQuery() == 1)
+                    isUpdated = true;
 
                 if (book.Image != null)
                 {
-                    using (SqliteBlob writeStream = new SqliteBlob(dbConn, "Books", "Image", book.ID))
-                    {
-                        book.Image.StreamSource.CopyTo(writeStream);
-                    }
+                    DbConnection.UploadImageBlob(book.Image, dbConn, book.ID);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                isUpdated = false;
             }
             finally
             {
                 dbConn?.Close();
             }
+            return isUpdated;
         }
     }
 }
