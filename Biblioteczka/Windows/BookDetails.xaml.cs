@@ -20,6 +20,13 @@ namespace Biblioteczka.Windows
     /// </summary>
     public partial class BookDetails : Window
     {
+        private static readonly string EbookButtonEnabledText = "Dostępny E-book!";
+        private static readonly string EbookButtonDisabledText = "E-book niedostępny";
+        private static readonly string AudiobookButtonEnabledText = "Dostępny Audiobook!";
+        private static readonly string AudiobookButtonDisabledText = "Audiobook niedostępny";
+        private static readonly string FilmButtonEnabledText = "Dostępna adaptacja filmowa!";
+        private static readonly string FilmButtonDisabledText = "Adapacja filmowa niedostępna";
+
         BookViewModel viewModel;
 
         public BookDetails(BookViewModel bookViewModel)
@@ -29,20 +36,42 @@ namespace Biblioteczka.Windows
             viewModel = bookViewModel;
             DataContext = viewModel;
 
+            SetButtons();
+        }
+
+        private void SetButtons()
+        {
             if (viewModel.EbookLink == null)
             {
-                buttonEbook.Content = "E-book niedostępny";
+                buttonEbook.Content = EbookButtonDisabledText;
                 buttonEbook.IsEnabled = false;
             }
+            else
+            {
+                buttonEbook.Content = EbookButtonEnabledText;
+                buttonEbook.IsEnabled = true;
+            }
+
             if (viewModel.AudiobookLink == null)
             {
-                buttonAudiobook.Content = "Audiobook niedostępny";
+                buttonAudiobook.Content = AudiobookButtonDisabledText;
                 buttonAudiobook.IsEnabled = false;
             }
+            else
+            {
+                buttonAudiobook.Content = AudiobookButtonEnabledText;
+                buttonAudiobook.IsEnabled = true;
+            }
+
             if (viewModel.MovieLink == null)
             {
-                buttonFilm.Content = "Adapacja filmowa niedostępna";
+                buttonFilm.Content = FilmButtonDisabledText;
                 buttonFilm.IsEnabled = false;
+            }
+            else
+            {
+                buttonFilm.Content = FilmButtonEnabledText;
+                buttonFilm.IsEnabled = true;
             }
         }
 
@@ -53,7 +82,8 @@ namespace Biblioteczka.Windows
 
         private void EditButtonClick(object sender, RoutedEventArgs e)
         {
-            (new EditEntry()).ShowDialog();
+            (new EditEntry(viewModel)).ShowDialog();
+            SetButtons();
         }
 
         private void buttonEbook_Click(object sender, RoutedEventArgs e)

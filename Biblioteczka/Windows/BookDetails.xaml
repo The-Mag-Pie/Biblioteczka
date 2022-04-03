@@ -58,9 +58,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="buttonEbook" Grid.Column="0" Content="Dostępny E-book!" Margin="20" Click="buttonEbook_Click"/>
-                    <Button x:Name="buttonAudiobook" Grid.Column="1" Content="Dostępny Audiobook!" Margin="20" Click="buttonAudiobook_Click"/>
-                    <Button x:Name="buttonFilm" Grid.Column="2" Content="Dostępna adaptacja filmowa!" Margin="20" Click="buttonFilm_Click"/>
+                    <Button x:Name="buttonEbook" Grid.Column="0" IsEnabled="False" Content="ebook" Margin="20" Click="buttonEbook_Click"/>
+                    <Button x:Name="buttonAudiobook" Grid.Column="1" IsEnabled="False" Content="audiobook" Margin="20" Click="buttonAudiobook_Click"/>
+                    <Button x:Name="buttonFilm" Grid.Column="2" IsEnabled="False" Content="film" Margin="20" Click="buttonFilm_Click"/>
                 </Grid>
             </Grid>
         </Grid>

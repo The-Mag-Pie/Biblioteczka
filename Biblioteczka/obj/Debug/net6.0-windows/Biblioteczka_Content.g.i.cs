@@ -9,7 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("book_logo.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/database.db")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/bookshelf.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/po_logo.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webview2loader.dll")]

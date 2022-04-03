@@ -10,15 +10,11 @@
 
   <ItemGroup>
     <None Remove="Resources\bookshelf.png" />
-    <None Remove="Resources\database.db" />
     <None Remove="Resources\po_logo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="book_logo.ico" />
-    <Content Include="Resources\database.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

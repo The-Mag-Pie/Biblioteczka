@@ -121,9 +121,6 @@
   <data name="bookshelf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\bookshelf.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\database.db;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="po_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\po_logo.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

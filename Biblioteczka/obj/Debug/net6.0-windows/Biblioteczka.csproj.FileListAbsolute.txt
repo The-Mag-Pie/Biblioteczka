@@ -44,7 +44,6 @@ C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Pr
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\obj\Debug\net6.0-windows\Windows\WebBrowserSelectLink.baml
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\obj\Debug\net6.0-windows\CustomControls\BookEntry.g.cs
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\obj\Debug\net6.0-windows\CustomControls\BookEntry.baml
-C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Resources\database.db
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\ref\Biblioteczka.dll
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Microsoft.Data.Sqlite.dll
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\SQLitePCLRaw.batteries_v2.dll

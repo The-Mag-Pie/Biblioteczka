@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using Biblioteczka.Database;
 
 namespace Biblioteczka.MVVM
 {
@@ -62,7 +63,7 @@ namespace Biblioteczka.MVVM
             {
                 if (Book.EbookLink != value)
                 {
-                    Book.EbookLink = value;
+                    Book.EbookLink = value != "" ? value : null;
                     OnPropertyChanged("EbookLink");
                 }
             }
@@ -74,7 +75,7 @@ namespace Biblioteczka.MVVM
             {
                 if (Book.AudiobookLink != value)
                 {
-                    Book.AudiobookLink = value;
+                    Book.AudiobookLink = value != "" ? value : null;
                     OnPropertyChanged("AudiobookLink");
                 }
             }
@@ -86,7 +87,7 @@ namespace Biblioteczka.MVVM
             {
                 if (Book.MovieLink != value)
                 {
-                    Book.MovieLink = value;
+                    Book.MovieLink = value != "" ? value : null;
                     OnPropertyChanged("MovieLink");
                 }
             }
@@ -121,6 +122,34 @@ namespace Biblioteczka.MVVM
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public BookViewModel Clone()
+        {
+            Book clonedBook = new Book();
+            clonedBook.ID = ID;
+            clonedBook.Title = Title;
+            clonedBook.Author = Author;
+            clonedBook.Description = Description;
+            clonedBook.EbookLink = EbookLink;
+            clonedBook.AudiobookLink = AudiobookLink;
+            clonedBook.MovieLink = MovieLink;
+            clonedBook.Image = Image;
+            clonedBook.CategoryName = CategoryName;
+            return new BookViewModel(clonedBook);
+        }
+
+        public void Update(BookViewModel editedViewModel)
+        {
+            Title = editedViewModel.Title;
+            Author = editedViewModel.Author;
+            Description = editedViewModel.Description;
+            EbookLink = editedViewModel.EbookLink;
+            AudiobookLink = editedViewModel.AudiobookLink;
+            MovieLink = editedViewModel.MovieLink;
+            Image = editedViewModel.Image;
+            CategoryName = editedViewModel.CategoryName;
+            DbUpdate.UpdateBook(Book);
         }
     }
 }

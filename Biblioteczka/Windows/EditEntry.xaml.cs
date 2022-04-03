@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using Biblioteczka.MVVM;
+using Biblioteczka.Database;
+using System.IO;
 
 namespace Biblioteczka.Windows
 {
@@ -20,21 +23,19 @@ namespace Biblioteczka.Windows
     /// </summary>
     public partial class EditEntry : Window
     {
-        public EditEntry()
+        BookViewModel viewModel;
+        BookViewModel mainViewModel;
+
+        public EditEntry(BookViewModel bookViewModel)
         {
             InitializeComponent();
 
-            bookTitle.Text = "jakiś tytuł";
-            bookAuthor.Text = "Adam Mickiewicz";
-            bookGenre.Items.Add("opcja 1");
-            bookGenre.Items.Add("opcja 2");
-            bookGenre.Items.Add("opcja 3");
-            bookGenre.SelectedIndex = 1;
-            bookDescription.Text = "króciutki opis";
-            bookEbook.Text = "https://facebook.com";
-            bookAudiobook.Text = "https://youtube.com";
-            bookMovie.Text = "https://filmweb.pl";
-            bookImage.Source = new BitmapImage(new Uri("https://podarunkowo.pl/6538-large_default/duza-ksiazka-na-alkohol-pan-tadeusz.jpg"));
+            mainViewModel = bookViewModel;
+            viewModel = bookViewModel.Clone();
+            DataContext = viewModel;
+
+            bookCategory.ItemsSource = DbRead.GetCategories();
+            bookCategory.SelectedItem = viewModel.CategoryName;
         }
 
         //private void SetImage(Uri uri)
@@ -73,7 +74,15 @@ namespace Biblioteczka.Windows
             ofd.Filter = "Pliki obrazów (*.BMP; *.JPG; *.PNG, *.GIF)| *.BMP; *.JPG; *.PNG; *.GIF";
             if (ofd.ShowDialog() == true)
             {
-                bookImage.Source = new BitmapImage(new Uri(ofd.FileName));
+                Stream stream = ofd.OpenFile();
+                stream.Seek(0, SeekOrigin.Begin);
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.EndInit();
+
+                //bookImage.Source = new BitmapImage(new Uri(ofd.FileName));
+                viewModel.Image = image;
             }
         }
 
@@ -90,6 +99,12 @@ namespace Biblioteczka.Windows
         private void movieFindButton_Click(object sender, RoutedEventArgs e)
         {
             bookMovie.Text = WebBrowserSelectLink.CreateFilmAdaptationWindow("tytul ksiazki").SavedLink;
+        }
+
+        private void SaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            mainViewModel.Update(viewModel);
+            Close();
         }
     }
 }

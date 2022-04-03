@@ -73,16 +73,6 @@ namespace Biblioteczka {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] database {
-            get {
-                object obj = ResourceManager.GetObject("database", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         public static byte[] po_logo {
             get {
                 object obj = ResourceManager.GetObject("po_logo", resourceCulture);

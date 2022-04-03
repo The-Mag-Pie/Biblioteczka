@@ -31,7 +31,7 @@
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Content="Nie wczytano zdjęcia okładki!" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Image x:Name="bookImage" Grid.Row="0" Margin="8"/>
+                <Image x:Name="bookImage" Source="{Binding Image}" Grid.Row="0" Margin="8"/>
 
                 <Button Grid.Row="1" Grid.Column="0" Content="Wybierz zdjęcie okładki" Width="200" Margin="7" Click="SelectImageButtonClick"/>
             </Grid>
@@ -67,17 +67,17 @@
                 <Label Grid.Column="0" Grid.Row="5" Content="Link do audiobooka:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label Grid.Column="0" Grid.Row="6" Content="Link do adaptacji:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <TextBox x:Name="bookTitle" Grid.Column="1" Grid.Row="0" Margin="7" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="bookAuthor" Grid.Column="1" Grid.Row="1" Margin="7" VerticalContentAlignment="Center"/>
-                <ComboBox x:Name="bookGenre" Grid.Column="1" Grid.Row="2" Margin="7"/>
-                <TextBox x:Name="bookDescription" Grid.Column="1" Grid.Row="3" Margin="7" TextWrapping="Wrap"/>
+                <TextBox x:Name="bookTitle" Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Margin="7" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="bookAuthor" Text="{Binding Author}" Grid.Column="1" Grid.Row="1" Margin="7" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="bookCategory" Grid.Column="1" Grid.Row="2" Margin="7"/>
+                <TextBox x:Name="bookDescription" Text="{Binding Description}" Grid.Column="1" Grid.Row="3" Margin="7" TextWrapping="Wrap"/>
                 <Grid Grid.Column="1" Grid.Row="4" Margin="7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="110"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:Name="bookEbook" Grid.Column="0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="bookEbook" Text="{Binding EbookLink}" Grid.Column="0" VerticalContentAlignment="Center"/>
                     <Button x:Name="ebookFindButton" Grid.Column="1" Content="Szukaj w Internecie" Click="ebookFindButton_Click" />
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="5" Margin="7">
@@ -86,7 +86,7 @@
                         <ColumnDefinition Width="110"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:Name="bookAudiobook" Grid.Column="0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="bookAudiobook" Text="{Binding AudiobookLink}" Grid.Column="0" VerticalContentAlignment="Center"/>
                     <Button x:Name="audiobookFindButton" Grid.Column="1" Content="Szukaj w Internecie" Click="audiobookFindButton_Click" />
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="6" Margin="7">
@@ -95,7 +95,7 @@
                         <ColumnDefinition Width="110"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:Name="bookMovie" Grid.Column="0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="bookMovie" Text="{Binding MovieLink}" Grid.Column="0" VerticalContentAlignment="Center"/>
                     <Button x:Name="movieFindButton" Grid.Column="1" Content="Szukaj w Internecie" Click="movieFindButton_Click" />
                 </Grid>
             </Grid>
@@ -111,7 +111,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="1" Content="Usuń wpis" Width="200" Margin="7" Foreground="Red" FontWeight="Bold"/>
-            <Button Grid.Column="2" Content="Zapisz" Width="200" Margin="7"/>
+            <Button Grid.Column="2" Content="Zapisz" Width="200" Margin="7" Click="SaveButtonClick"/>
             <Button Grid.Column="3" Content="Anuluj" Width="200" Margin="7" Click="CancelButtonClick"/>
         </Grid>
     </Grid>
