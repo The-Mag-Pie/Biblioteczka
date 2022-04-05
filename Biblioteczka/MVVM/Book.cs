@@ -16,7 +16,7 @@ namespace Biblioteczka.MVVM
         private string? _ebookLink;
         private string? _audiobookLink;
         private string? _movieLink;
-        private BitmapImage? _image;
+        private BitmapImage? _image = null;
         private string _categoryName;
 
         public long ID

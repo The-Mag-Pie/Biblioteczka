@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,10 +30,11 @@ namespace Biblioteczka.Database
             public DbConnectionException() : base("Error during connecting to database.") { }
         }
 
-        public static void UploadImageBlob(BitmapImage image, SqliteConnection databaseConnection, long rowID)
+        public static void UploadImageBlob(BitmapImage image, SqliteConnection dbConnection, long rowID)
         {
-            using (SqliteBlob writeStream = new SqliteBlob(databaseConnection, "Books", "Image", rowID))
+            using (SqliteBlob writeStream = new SqliteBlob(dbConnection, "Books", "Image", rowID))
             {
+                image.StreamSource.Seek(0, SeekOrigin.Begin);
                 image.StreamSource.CopyTo(writeStream);
             }
         }

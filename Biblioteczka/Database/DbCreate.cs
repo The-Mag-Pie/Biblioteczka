@@ -51,6 +51,10 @@ namespace Biblioteczka.Database
 
                     book.ID = bookID;
                 }
+                else
+                {
+                    throw new Exception("Błąd podczas tworzenia nowej książki.");
+                }
             }
             catch (Exception ex)
             {

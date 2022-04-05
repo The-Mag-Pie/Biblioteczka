@@ -38,7 +38,14 @@ namespace Biblioteczka.Database
                     book.EbookLink = reader["EbookLink"] is not DBNull ? (string)reader["EbookLink"] : null;
                     book.AudiobookLink = reader["AudiobookLink"] is not DBNull ? (string)reader["AudiobookLink"] : null;
                     book.MovieLink = reader["MovieLink"] is not DBNull ? (string)reader["MovieLink"] : null;
-                    book.Image = reader["Image"] is not DBNull ? ByteArrayToImage((byte[])reader["Image"]) : null;
+                    try
+                    {
+                        book.Image = reader["Image"] is not DBNull ? ByteArrayToImage((byte[])reader["Image"]) : null;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     book.CategoryName = (string)reader["CategoryName"];
                     books.Add(book);
                 }

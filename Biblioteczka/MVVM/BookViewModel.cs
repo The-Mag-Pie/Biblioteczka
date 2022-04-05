@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using Biblioteczka.Database;
+using Microsoft.Data.Sqlite;
 
 namespace Biblioteczka.MVVM
 {
@@ -144,7 +145,6 @@ namespace Biblioteczka.MVVM
         {
             if (DbUpdate.UpdateBook(editedViewModel.Book))
             {
-                MessageBox.Show("Dane książki zostały pomyślnie zaktualizowane.");
                 Title = editedViewModel.Title;
                 Author = editedViewModel.Author;
                 Description = editedViewModel.Description;
@@ -153,6 +153,8 @@ namespace Biblioteczka.MVVM
                 MovieLink = editedViewModel.MovieLink;
                 Image = editedViewModel.Image;
                 CategoryName = editedViewModel.CategoryName;
+
+                MessageBox.Show("Dane książki zostały pomyślnie zaktualizowane.");
             }
             else
             {
