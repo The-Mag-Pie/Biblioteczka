@@ -22,6 +22,9 @@ namespace Biblioteczka.CustomControls
     /// </summary>
     public partial class BookEntry : UserControl
     {
+        public delegate void UpdateView();
+        public event UpdateView DetailsWindowClosed;
+
         BookViewModel viewModel;
 
         public BookEntry(int counter, BookViewModel bookViewModel, bool header = false)
@@ -64,6 +67,7 @@ namespace Biblioteczka.CustomControls
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             (new BookDetails(viewModel)).ShowDialog();
+            DetailsWindowClosed?.Invoke();
         }
     }
 }

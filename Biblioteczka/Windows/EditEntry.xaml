@@ -106,13 +106,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="230"/>
                 <ColumnDefinition Width="230"/>
-                <ColumnDefinition Width="230"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1" Content="Usuń wpis" Width="200" Margin="7" Foreground="Red" FontWeight="Bold"/>
-            <Button Grid.Column="2" Content="Zapisz" Width="200" Margin="7" Click="SaveButtonClick"/>
-            <Button Grid.Column="3" Content="Anuluj" Width="200" Margin="7" Click="CancelButtonClick"/>
+            <Button Grid.Column="1" Content="Zapisz" Width="200" Margin="7" Click="SaveButtonClick"/>
+            <Button Grid.Column="2" Content="Anuluj" Width="200" Margin="7" Click="CancelButtonClick"/>
         </Grid>
     </Grid>
 </Window>

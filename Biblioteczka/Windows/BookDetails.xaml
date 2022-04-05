@@ -74,7 +74,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1" Content="Usuń wpis" Width="200" Margin="7" Foreground="Red" FontWeight="Bold"/>
+            <Button Grid.Column="1" Content="Usuń wpis" Width="200" Margin="7" Foreground="Red" FontWeight="Bold" Click="DeleteButtonClick"/>
             <Button Grid.Column="2" Content="Edytuj dane" Width="200" Margin="7" Click="EditButtonClick"/>
             <Button Grid.Column="3" Content="Wyjdź" Width="200" Margin="7" Click="CancelButtonClick"/>
         </Grid>

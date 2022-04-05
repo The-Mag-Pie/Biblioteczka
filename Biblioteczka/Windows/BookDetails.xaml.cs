@@ -80,6 +80,15 @@ namespace Biblioteczka.Windows
             Close();
         }
 
+        private void DeleteButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz usunąć książkę?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                viewModel.Delete();
+                Close();
+            }
+        }
+
         private void EditButtonClick(object sender, RoutedEventArgs e)
         {
             (new EditEntry(viewModel)).ShowDialog();

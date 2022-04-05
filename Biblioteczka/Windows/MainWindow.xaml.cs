@@ -37,9 +37,12 @@ namespace Biblioteczka.Windows
         {
             entryStackPanel.Children.Clear();
             int i = 0;
+            BookEntry entry;
             foreach (Book book in DbRead.GetBooks())
             {
-                entryStackPanel.Children.Add(new BookEntry(++i, new BookViewModel(book)));
+                entry = new BookEntry(++i, new BookViewModel(book));
+                entry.DetailsWindowClosed += UpdateBookList;
+                entryStackPanel.Children.Add(entry);
             }
         }
 

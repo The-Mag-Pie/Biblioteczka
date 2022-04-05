@@ -173,5 +173,17 @@ namespace Biblioteczka.MVVM
                 MessageBox.Show("Błąd podczas dodawania nowej książki!");
             }
         }
+
+        public void Delete()
+        {
+            if (DbDelete.DeleteBook(Book))
+            {
+                MessageBox.Show("Książka została usunięta pomyślnie.");
+            }
+            else
+            {
+                MessageBox.Show("Błąd podczas usuwania książki!");
+            }
+        }
     }
 }
