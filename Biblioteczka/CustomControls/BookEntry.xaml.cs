@@ -41,17 +41,17 @@ namespace Biblioteczka.CustomControls
                 counterText.Foreground = Brushes.Black;
                 counterText.FontSize = 14;
 
-                authorText.Content = "Autor";
+                authorText.Text = "Autor";
                 authorText.FontWeight = FontWeights.Bold;
                 authorText.Foreground = Brushes.Black;
                 authorText.FontSize = 14;
 
-                titleText.Content = "Tytuł";
+                titleText.Text = "Tytuł";
                 titleText.FontWeight = FontWeights.Bold;
                 titleText.Foreground = Brushes.Black;
                 titleText.FontSize = 14;
 
-                categoryText.Content = "Gatunek";
+                categoryText.Text = "Gatunek";
                 categoryText.FontWeight = FontWeights.Bold;
                 categoryText.Foreground = Brushes.Black;
                 categoryText.FontSize = 14;

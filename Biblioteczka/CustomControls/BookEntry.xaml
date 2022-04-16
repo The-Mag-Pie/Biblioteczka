@@ -22,9 +22,9 @@
         <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="1"/>
 
         <Label x:Name="counterText" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label x:Name="authorText" Content="{Binding Author}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FF31BD31"/>
-        <Label x:Name="titleText" Content="{Binding Title}" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFFF0003" FontWeight="Bold" FontSize="20"/>
-        <Label x:Name="categoryText" Content="{Binding CategoryName}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Blue" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="authorText" Text="{Binding Author}" Grid.Column="1" TextAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#FF31BD31"/>
+        <TextBlock x:Name="titleText" Text="{Binding Title}" Grid.Column="2" TextAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFFF0003" FontWeight="Bold" FontSize="20"/>
+        <TextBlock x:Name="categoryText" Text="{Binding CategoryName}" Grid.Column="3" TextAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Blue" FontWeight="Bold" FontSize="14"/>
         <Button x:Name="buttonDetails" Grid.Column="4" Content="Szczegóły" Margin="10" Click="Button_Click"/>
     </Grid>
 </UserControl>

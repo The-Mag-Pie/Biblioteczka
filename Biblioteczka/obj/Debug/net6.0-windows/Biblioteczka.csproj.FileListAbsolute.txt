@@ -7,7 +7,6 @@ C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Pr
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Biblioteczka.deps.json
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Biblioteczka.runtimeconfig.json
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Biblioteczka.dll
-C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\ref\Biblioteczka.dll
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Biblioteczka.pdb
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Microsoft.Data.Sqlite.dll
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\Microsoft.Web.WebView2.Core.dll
@@ -64,3 +63,4 @@ C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Pr
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\obj\Debug\net6.0-windows\Biblioteczka.pdb
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\obj\Debug\net6.0-windows\Biblioteczka.genruntimeconfig.cache
 C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\obj\Debug\net6.0-windows\Biblioteczka.csproj.AssemblyReference.cache
+C:\Users\barte\OneDrive - The Opole University of Technology\Studia\semestr_4\Programowanie\Biblioteczka\Biblioteczka\bin\Debug\net6.0-windows\ref\Biblioteczka.dll
