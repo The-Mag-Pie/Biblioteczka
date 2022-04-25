@@ -13,7 +13,7 @@ namespace Biblioteczka.Database
 {
     public static class DbRead
     {
-        public static List<Book> GetBooks()
+        public static List<Book> GetBooks(string partialSqlString)
         {
             List<Book> books = new List<Book>();
             SqliteConnection? dbConn = null;
@@ -23,7 +23,7 @@ namespace Biblioteczka.Database
                 dbConn = DbConnection.CreateConnection();
 
                 SqliteCommand cmd = dbConn.CreateCommand();
-                cmd.CommandText = "SELECT *, (SELECT Name FROM Categories WHERE ID = B.Category_ID) AS CategoryName FROM Books B;";
+                cmd.CommandText = "SELECT *, (SELECT Name FROM Categories WHERE ID = B.Category_ID) AS CategoryName FROM Books B " + partialSqlString;
 
                 SqliteDataReader reader = cmd.ExecuteReader();
 

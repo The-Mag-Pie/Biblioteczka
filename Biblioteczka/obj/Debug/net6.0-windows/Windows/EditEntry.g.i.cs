@@ -149,7 +149,7 @@ namespace Biblioteczka.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Biblioteczka;V1.0.0.0;component/windows/editentry.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Biblioteczka;component/windows/editentry.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\EditEntry.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -27,41 +27,41 @@ namespace Biblioteczka.CustomControls
 
         BookViewModel viewModel;
 
-        public BookEntry(int counter, BookViewModel bookViewModel, bool header = false)
+        public BookEntry(int counter, BookViewModel bookViewModel)
         {
             InitializeComponent();
 
             viewModel = bookViewModel;
             DataContext = viewModel;
 
-            if (header)
-            {
-                counterText.Content = "Lp.";
-                counterText.FontWeight = FontWeights.Bold;
-                counterText.Foreground = Brushes.Black;
-                counterText.FontSize = 14;
+            counterText.Content = counter;
+        }
 
-                authorText.Text = "Autor";
-                authorText.FontWeight = FontWeights.Bold;
-                authorText.Foreground = Brushes.Black;
-                authorText.FontSize = 14;
+        public BookEntry()
+        {
+            InitializeComponent();
 
-                titleText.Text = "Tytuł";
-                titleText.FontWeight = FontWeights.Bold;
-                titleText.Foreground = Brushes.Black;
-                titleText.FontSize = 14;
+            counterText.Content = "Lp.";
+            counterText.FontWeight = FontWeights.Bold;
+            counterText.Foreground = Brushes.Black;
+            counterText.FontSize = 14;
 
-                categoryText.Text = "Gatunek";
-                categoryText.FontWeight = FontWeights.Bold;
-                categoryText.Foreground = Brushes.Black;
-                categoryText.FontSize = 14;
+            authorText.Text = "Autor";
+            authorText.FontWeight = FontWeights.Bold;
+            authorText.Foreground = Brushes.Black;
+            authorText.FontSize = 14;
 
-                buttonDetails.Visibility = Visibility.Hidden; 
-            }
-            else
-            {
-                counterText.Content = counter;
-            }
+            titleText.Text = "Tytuł";
+            titleText.FontWeight = FontWeights.Bold;
+            titleText.Foreground = Brushes.Black;
+            titleText.FontSize = 14;
+
+            categoryText.Text = "Gatunek";
+            categoryText.FontWeight = FontWeights.Bold;
+            categoryText.Foreground = Brushes.Black;
+            categoryText.FontSize = 14;
+
+            buttonDetails.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

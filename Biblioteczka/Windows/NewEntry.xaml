@@ -67,10 +67,10 @@
                 <Label Grid.Column="0" Grid.Row="5" Content="Link do audiobooka:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label Grid.Column="0" Grid.Row="6" Content="Link do adaptacji:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <TextBox Grid.Column="1" Text="{Binding Title}" Grid.Row="0" Margin="7" VerticalContentAlignment="Center"/>
-                <TextBox Grid.Column="1" Text="{Binding Author}" Grid.Row="1" Margin="7" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="bookTitle" Grid.Column="1" Text="{Binding Title}" Grid.Row="0" Margin="7" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="bookAuthor" Grid.Column="1" Text="{Binding Author}" Grid.Row="1" Margin="7" VerticalContentAlignment="Center"/>
                 <ComboBox x:Name="bookCategory" Grid.Column="1" Grid.Row="2" Margin="7" SelectionChanged="bookCategory_SelectionChanged"/>
-                <TextBox Grid.Column="1" Text="{Binding Description}" Grid.Row="3" Margin="7" TextWrapping="Wrap"/>
+                <TextBox x:Name="bookDescription" Grid.Column="1" Text="{Binding Description}" Grid.Row="3" Margin="7" TextWrapping="Wrap"/>
                 <Grid Grid.Column="1" Grid.Row="4" Margin="7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

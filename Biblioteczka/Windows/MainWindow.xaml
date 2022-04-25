@@ -41,11 +41,11 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Column="1" Content="Sortuj:" HorizontalAlignment="Right"/>
-            <ComboBox Grid.Column="2">
+            <ComboBox x:Name="sortComboBox" Grid.Column="2">
                 <ComboBoxItem Content="Według autora od A do Z" Name="authorAscSort"/>
                 <ComboBoxItem Content="Według autora od Z do A" Name="authorDescSort"/>
                 <ComboBoxItem Content="Według tytułu od A do Z" Name="titleAscSort"/>
-                <ComboBoxItem Content="Według tytułu od A do Z" Name="titleDescSort"/>
+                <ComboBoxItem Content="Według tytułu od Z do A" Name="titleDescSort"/>
                 <ComboBoxItem Content="Według daty dodania od najstarszych" Name="addDateAscSort"/>
                 <ComboBoxItem Content="Według daty dodania od najmłodszych" Name="addDateDescSort"/>
             </ComboBox>
@@ -54,8 +54,8 @@
             <ComboBox x:Name="categoryComboBox" Grid.Column="4"/>
 
             <Label Grid.Column="5" Content="Wyszukaj:" HorizontalAlignment="Right"/>
-            <TextBox Grid.Column="6" VerticalContentAlignment="Center"/>
-            <Button Grid.Column="7" Content="Szukaj" Width="50"/>
+            <TextBox x:Name="searchBox" Grid.Column="6" VerticalContentAlignment="Center" KeyUp="searchBox_KeyUp"/>
+            <Button x:Name="searchButton" Grid.Column="7" Content="Szukaj" Width="50" Click="searchButton_Click"/>
         </Grid>
 
         <Label Grid.Row="2" Content="Wybierz swoją książkę z listy poniżej:" HorizontalAlignment="Center" VerticalAlignment="Center"/>

@@ -102,8 +102,55 @@ namespace Biblioteczka.Windows
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-            mainViewModel.Update(viewModel);
-            Close();
+            string errorText = "";
+
+            if (bookEbook.Text.Length > 0)
+                try
+                {
+                    new Uri(bookEbook.Text);
+                }
+                catch
+                {
+                    errorText = "BŁĄD! Niepoprawny link do e-booka!";
+                }
+            if (bookAudiobook.Text.Length > 0)
+                try
+                {
+                    new Uri(bookAudiobook.Text);
+                }
+                catch
+                {
+                    errorText = "BŁĄD! Niepoprawny link do audiobooka!";
+                }
+            if (bookMovie.Text.Length > 0)
+                try
+                {
+                    new Uri(bookMovie.Text);
+                }
+                catch
+                {
+                    errorText = "BŁĄD! Niepoprawny link do adaptacji filmowej!";
+                }
+
+            if (bookTitle.Text.Length == 0)
+                errorText = "BŁĄD! Nie podano tytułu książki!";
+            else if (bookAuthor.Text.Length == 0)
+                errorText = "BŁĄD! Nie podano autora książki!";
+            else if (bookCategory.SelectedIndex == -1)
+                errorText = "BŁĄD! Nie wybrano kategorii książki!";
+            else if (bookDescription.Text.Length == 0)
+                errorText = "BŁĄD! Nie podano opisu książki!";
+
+            if (errorText.Length > 0)
+            {
+                MessageBox.Show(errorText);
+                return;
+            }
+            else
+            {
+                mainViewModel.Update(viewModel);
+                Close();
+            }
         }
 
         private void bookCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)

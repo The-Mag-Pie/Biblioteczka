@@ -93,7 +93,7 @@ namespace Biblioteczka.CustomControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Biblioteczka;V1.0.0.0;component/customcontrols/bookentry.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Biblioteczka;component/customcontrols/bookentry.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\CustomControls\BookEntry.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -77,7 +77,7 @@ namespace Biblioteczka.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Biblioteczka;V1.0.0.0;component/windows/bookdetails.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Biblioteczka;component/windows/bookdetails.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\BookDetails.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
