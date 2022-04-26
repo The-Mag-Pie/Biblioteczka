@@ -35,7 +35,7 @@
                 <Button x:Name="buttonForward" Grid.Column="1" Content="->" Click="buttonForward_Click"/>
             </Grid>
             
-            <TextBox x:Name="uriTextBox" Grid.Column="2"/>
+            <TextBox x:Name="uriTextBox" Grid.Column="2" KeyUp="uriTextBox_KeyUp"/>
             <Button x:Name="buttonLoad" Grid.Column="3" Content="Przejdź do strony" Click="buttonLoad_Click"/>
             <Button x:Name="buttonRefresh" Grid.Column="5" Content="Odśwież" Click="buttonRefresh_Click"/>
         </Grid>

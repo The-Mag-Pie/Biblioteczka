@@ -70,7 +70,7 @@
                 <TextBox x:Name="bookTitle" Text="{Binding Title}" Grid.Column="1" Grid.Row="0" Margin="7" VerticalContentAlignment="Center"/>
                 <TextBox x:Name="bookAuthor" Text="{Binding Author}" Grid.Column="1" Grid.Row="1" Margin="7" VerticalContentAlignment="Center"/>
                 <ComboBox x:Name="bookCategory" Grid.Column="1" Grid.Row="2" Margin="7" SelectionChanged="bookCategory_SelectionChanged"/>
-                <TextBox x:Name="bookDescription" Text="{Binding Description}" Grid.Column="1" Grid.Row="3" Margin="7" TextWrapping="Wrap"/>
+                <TextBox x:Name="bookDescription" Text="{Binding Description}" Grid.Column="1" Grid.Row="3" Margin="7" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
                 <Grid Grid.Column="1" Grid.Row="4" Margin="7">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

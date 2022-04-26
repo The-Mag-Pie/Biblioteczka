@@ -84,7 +84,25 @@ namespace Biblioteczka.Windows
 
         private void buttonLoad_Click(object sender, RoutedEventArgs e)
         {
-            if (uriTextBox.Text.Length > 0) webView.Source = new Uri(uriTextBox.Text);
+            if (uriTextBox.Text.Length > 0)
+                try
+                {
+                    if (uriTextBox.Text.StartsWith("http") == false)
+                        uriTextBox.Text = uriTextBox.Text.Insert(0, "http://");
+                    webView.Source = new Uri(uriTextBox.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("BŁĄD! Podano błędny link");
+                }
+        }
+
+        private void uriTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                buttonLoad.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
         }
 
         private void buttonRefresh_Click(object sender, RoutedEventArgs e)
