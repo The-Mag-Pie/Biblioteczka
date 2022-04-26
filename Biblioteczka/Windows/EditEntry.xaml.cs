@@ -38,31 +38,6 @@ namespace Biblioteczka.Windows
             bookCategory.SelectedItem = viewModel.CategoryName;
         }
 
-        //private void SetImage(Uri uri)
-        //{
-        //    BitmapImage bitmapImage = new BitmapImage();
-        //    bitmapImage.DownloadCompleted += (s, e) =>
-        //    {
-        //        int stride = bitmapImage.PixelWidth * 4;
-        //        int size = bitmapImage.PixelHeight * stride;
-        //        byte[] pixels = new byte[size];
-        //        bitmapImage.CopyPixels(pixels, stride, 0);
-
-        //        int firstPixelIndex = 1 * stride + 4 * 1;
-
-        //        bookImage.Source = bitmapImage;
-        //        imageGrid.Background = new SolidColorBrush(Color.FromArgb(
-        //            pixels[firstPixelIndex + 3],
-        //            pixels[firstPixelIndex + 0],
-        //            pixels[firstPixelIndex + 1],
-        //            pixels[firstPixelIndex + 2]));
-        //    };
-
-        //    bitmapImage.BeginInit();
-        //    bitmapImage.UriSource = uri;
-        //    bitmapImage.EndInit();
-        //}
-
         private void CancelButtonClick(object sender, RoutedEventArgs e)
         {
             Close();
