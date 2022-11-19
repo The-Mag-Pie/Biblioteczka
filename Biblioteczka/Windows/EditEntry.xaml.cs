@@ -34,8 +34,8 @@ namespace Biblioteczka.Windows
             viewModel = bookViewModel.Clone();
             DataContext = viewModel;
 
-            bookCategory.ItemsSource = DbRead.GetCategories();
-            bookCategory.SelectedItem = viewModel.CategoryName;
+            bookCategoriesList.ItemsSource = DbRead.GetCategories();
+            bookCategoriesList.SelectedItem = viewModel.CategoryName;
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
@@ -45,11 +45,11 @@ namespace Biblioteczka.Windows
 
         private void SelectImageButtonClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Pliki obrazów (*.BMP; *.JPG; *.PNG, *.GIF)| *.BMP; *.JPG; *.PNG; *.GIF";
-            if (ofd.ShowDialog() == true)
+            OpenFileDialog fileSelectionWindow = new OpenFileDialog();
+            fileSelectionWindow.Filter = "Pliki obrazów (*.BMP; *.JPG; *.PNG, *.GIF)| *.BMP; *.JPG; *.PNG; *.GIF";
+            if (fileSelectionWindow.ShowDialog() == true)
             {
-                Stream stream = ofd.OpenFile();
+                Stream stream = fileSelectionWindow.OpenFile();
                 stream.Seek(0, SeekOrigin.Begin);
                 BitmapImage image = new BitmapImage();
                 image.BeginInit();
@@ -62,19 +62,19 @@ namespace Biblioteczka.Windows
 
         private void ebookFindButton_Click(object sender, RoutedEventArgs e)
         {
-            string link = WebBrowserSelectLink.CreateEbookWindow(viewModel.Title).SavedLink;
+            string link = WebBrowserWithLinkSelection.CreateEbookWindow(viewModel.Title).SavedLink;
             viewModel.EbookLink = link == "" ? viewModel.EbookLink : link;
         }
 
         private void audiobookFindButton_Click(object sender, RoutedEventArgs e)
         {
-            string link = WebBrowserSelectLink.CreateAudiobookWindow(viewModel.Title).SavedLink;
+            string link = WebBrowserWithLinkSelection.CreateAudiobookWindow(viewModel.Title).SavedLink;
             viewModel.AudiobookLink = link == "" ? viewModel.AudiobookLink : link;
         }
 
         private void movieFindButton_Click(object sender, RoutedEventArgs e)
         {
-            string link = WebBrowserSelectLink.CreateFilmAdaptationWindow(viewModel.Title).SavedLink;
+            string link = WebBrowserWithLinkSelection.CreateFilmAdaptationWindow(viewModel.Title).SavedLink;
             viewModel.MovieLink = link == "" ? viewModel.MovieLink : link;
         }
 
@@ -114,7 +114,7 @@ namespace Biblioteczka.Windows
                 errorText = "BŁĄD! Nie podano tytułu książki!";
             else if (bookAuthor.Text.Length == 0)
                 errorText = "BŁĄD! Nie podano autora książki!";
-            else if (bookCategory.SelectedIndex == -1)
+            else if (bookCategoriesList.SelectedIndex == -1)
                 errorText = "BŁĄD! Nie wybrano kategorii książki!";
             else if (bookDescription.Text.Length == 0)
                 errorText = "BŁĄD! Nie podano opisu książki!";
@@ -131,10 +131,10 @@ namespace Biblioteczka.Windows
             }
         }
 
-        private void bookCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void bookCategoriesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (bookCategory.SelectedItem != null)
-                viewModel.CategoryName = bookCategory.SelectedItem.ToString();
+            if (bookCategoriesList.SelectedItem != null)
+                viewModel.CategoryName = bookCategoriesList.SelectedItem.ToString();
         }
     }
 }

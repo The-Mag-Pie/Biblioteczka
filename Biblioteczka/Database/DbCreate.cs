@@ -34,15 +34,15 @@ namespace Biblioteczka.Database
             {
                 dbConn = DbConnection.CreateConnection();
 
-                SqliteCommand cmd = dbConn.CreateCommand();
+                SqliteCommand sqlCommand = dbConn.CreateCommand();
 
-                cmd.CommandText = sqlInsertString;
-                if (cmd.ExecuteNonQuery() == 1)
+                sqlCommand.CommandText = sqlInsertString;
+                if (sqlCommand.ExecuteNonQuery() == 1)
                 {
                     isCreated = true;
 
-                    cmd.CommandText = "SELECT last_insert_rowid();";
-                    long bookID = (long)cmd.ExecuteScalar();
+                    sqlCommand.CommandText = "SELECT last_insert_rowid();";
+                    long bookID = (long)sqlCommand.ExecuteScalar();
 
                     if (book.Image != null)
                     {

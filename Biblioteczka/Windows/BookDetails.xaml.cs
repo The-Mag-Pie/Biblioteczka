@@ -36,10 +36,10 @@ namespace Biblioteczka.Windows
             viewModel = bookViewModel;
             DataContext = viewModel;
 
-            SetButtons();
+            ConfigureButtons();
         }
 
-        private void SetButtons()
+        private void ConfigureButtons()
         {
             if (viewModel.EbookLink == null)
             {
@@ -92,7 +92,7 @@ namespace Biblioteczka.Windows
         private void EditButtonClick(object sender, RoutedEventArgs e)
         {
             (new EditEntry(viewModel)).ShowDialog();
-            SetButtons();
+            ConfigureButtons();
         }
 
         private void buttonEbook_Click(object sender, RoutedEventArgs e)

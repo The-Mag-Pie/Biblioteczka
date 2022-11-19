@@ -17,25 +17,25 @@ namespace Biblioteczka.Windows
     /// <summary>
     /// Interaction logic for WebBrowserSelectLink.xaml
     /// </summary>
-    public partial class WebBrowserSelectLink : Window
+    public partial class WebBrowserWithLinkSelection : Window
     {
-        public static WebBrowserSelectLink CreateAudiobookWindow(string bookTitle)
+        public static WebBrowserWithLinkSelection CreateAudiobookWindow(string bookTitle)
         {
-            WebBrowserSelectLink browser = new WebBrowserSelectLink(bookTitle + " - Znajdź audiobook", new Uri("https://librivox.org/"));
+            WebBrowserWithLinkSelection browser = new WebBrowserWithLinkSelection(bookTitle + " - Znajdź audiobook", new Uri("https://librivox.org/"));
             browser.ShowDialog();
             return browser;
         }
 
-        public static WebBrowserSelectLink CreateEbookWindow(string bookTitle)
+        public static WebBrowserWithLinkSelection CreateEbookWindow(string bookTitle)
         {
-            WebBrowserSelectLink browser = new WebBrowserSelectLink(bookTitle + " - Znajdź e-book", new Uri("https://1lib.pl/"));
+            WebBrowserWithLinkSelection browser = new WebBrowserWithLinkSelection(bookTitle + " - Znajdź e-book", new Uri("https://1lib.pl/"));
             browser.ShowDialog();
             return browser;
         }
 
-        public static WebBrowserSelectLink CreateFilmAdaptationWindow(string bookTitle)
+        public static WebBrowserWithLinkSelection CreateFilmAdaptationWindow(string bookTitle)
         {
-            WebBrowserSelectLink browser = new WebBrowserSelectLink(bookTitle + " - Znajdź adaptację filmową", new Uri("https://www.filmweb.pl/"));
+            WebBrowserWithLinkSelection browser = new WebBrowserWithLinkSelection(bookTitle + " - Znajdź adaptację filmową", new Uri("https://www.filmweb.pl/"));
             browser.ShowDialog();
             return browser;
         }
@@ -43,7 +43,7 @@ namespace Biblioteczka.Windows
         private string _savedLink = "";
         public string SavedLink { get { return _savedLink; } }
 
-        public WebBrowserSelectLink(string title, Uri uri)
+        public WebBrowserWithLinkSelection(string title, Uri uri)
         {
             InitializeComponent();
             Title = title;

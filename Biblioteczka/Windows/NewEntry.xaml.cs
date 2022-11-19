@@ -61,19 +61,19 @@ namespace Biblioteczka.Windows
 
         private void ebookFindButton_Click(object sender, RoutedEventArgs e)
         {
-            string link = WebBrowserSelectLink.CreateEbookWindow(viewModel.Title).SavedLink;
+            string link = WebBrowserWithLinkSelection.CreateEbookWindow(viewModel.Title).SavedLink;
             viewModel.EbookLink = link == "" ? viewModel.EbookLink : link;
         }
 
         private void audiobookFindButton_Click(object sender, RoutedEventArgs e)
         {
-            string link = WebBrowserSelectLink.CreateAudiobookWindow(viewModel.Title).SavedLink;
+            string link = WebBrowserWithLinkSelection.CreateAudiobookWindow(viewModel.Title).SavedLink;
             viewModel.AudiobookLink = link == "" ? viewModel.AudiobookLink : link;
         }
 
         private void movieFindButton_Click(object sender, RoutedEventArgs e)
         {
-            string link = WebBrowserSelectLink.CreateFilmAdaptationWindow(viewModel.Title).SavedLink;
+            string link = WebBrowserWithLinkSelection.CreateFilmAdaptationWindow(viewModel.Title).SavedLink;
             viewModel.MovieLink = link == "" ? viewModel.MovieLink : link;
         }
 
