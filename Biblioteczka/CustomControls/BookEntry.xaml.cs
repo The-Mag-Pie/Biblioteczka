@@ -27,41 +27,41 @@ namespace Biblioteczka.CustomControls
 
         BookViewModel viewModel;
 
-        public BookEntry(int counter, BookViewModel bookViewModel)
+        public BookEntry(int ordinal, BookViewModel bookViewModel)
         {
             InitializeComponent();
 
             viewModel = bookViewModel;
             DataContext = viewModel;
 
-            counterText.Content = counter;
+            ordinalLabel.Content = ordinal;
         }
 
         public BookEntry()
         {
             InitializeComponent();
 
-            counterText.Content = "Lp.";
-            counterText.FontWeight = FontWeights.Bold;
-            counterText.Foreground = Brushes.Black;
-            counterText.FontSize = 14;
+            ordinalLabel.Content = "Lp.";
+            ordinalLabel.FontWeight = FontWeights.Bold;
+            ordinalLabel.Foreground = Brushes.Black;
+            ordinalLabel.FontSize = 14;
 
-            authorText.Text = "Autor";
-            authorText.FontWeight = FontWeights.Bold;
-            authorText.Foreground = Brushes.Black;
-            authorText.FontSize = 14;
+            authorLabel.Text = "Autor";
+            authorLabel.FontWeight = FontWeights.Bold;
+            authorLabel.Foreground = Brushes.Black;
+            authorLabel.FontSize = 14;
 
-            titleText.Text = "Tytuł";
-            titleText.FontWeight = FontWeights.Bold;
-            titleText.Foreground = Brushes.Black;
-            titleText.FontSize = 14;
+            titleLabel.Text = "Tytuł";
+            titleLabel.FontWeight = FontWeights.Bold;
+            titleLabel.Foreground = Brushes.Black;
+            titleLabel.FontSize = 14;
 
-            categoryText.Text = "Gatunek";
-            categoryText.FontWeight = FontWeights.Bold;
-            categoryText.Foreground = Brushes.Black;
-            categoryText.FontSize = 14;
+            categoryLabel.Text = "Gatunek";
+            categoryLabel.FontWeight = FontWeights.Bold;
+            categoryLabel.Foreground = Brushes.Black;
+            categoryLabel.FontSize = 14;
 
-            buttonDetails.Visibility = Visibility.Hidden;
+            openDetailsButton.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
