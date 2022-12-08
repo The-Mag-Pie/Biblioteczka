@@ -34,6 +34,7 @@ namespace Biblioteczka.Database
         {
             using (SqliteBlob writeStream = new SqliteBlob(dbConnection, "Books", "Image", rowID))
             {
+                // Before copying to output stream, we need to set position to begin in the input stream
                 image.StreamSource.Seek(0, SeekOrigin.Begin);
                 image.StreamSource.CopyTo(writeStream);
             }

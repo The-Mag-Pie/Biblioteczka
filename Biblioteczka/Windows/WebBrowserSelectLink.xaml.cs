@@ -87,6 +87,7 @@ namespace Biblioteczka.Windows
             if (uriTextBox.Text.Length > 0)
                 try
                 {
+                    // Because WebView library does not support URIs without HTTP prefix, it must be added in code
                     if (uriTextBox.Text.StartsWith("http") == false)
                         uriTextBox.Text = uriTextBox.Text.Insert(0, "http://");
                     webView.Source = new Uri(uriTextBox.Text);

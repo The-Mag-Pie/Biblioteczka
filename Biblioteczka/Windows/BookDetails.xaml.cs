@@ -41,6 +41,9 @@ namespace Biblioteczka.Windows
 
         private void ConfigureButtons()
         {
+            // If property is empty, then the button is blocked for user (disabled).
+            // If property contains some data, then the button is enabled and clickable.
+
             if (viewModel.EbookLink == null)
             {
                 buttonEbook.Content = EbookButtonDisabledText;

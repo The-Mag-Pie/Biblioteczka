@@ -26,6 +26,7 @@ namespace Biblioteczka.Windows
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
+            // Open system default mail client to write an email
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
             {
                 UseShellExecute = true,

@@ -31,6 +31,9 @@ namespace Biblioteczka.Windows
             InitializeComponent();
 
             mainViewModel = bookViewModel;
+            // Clone model to not overwrite data before updating in database
+            // so that the data in the app is consistent with the data in the database
+            // in case of cancelling the edition
             viewModel = bookViewModel.Clone();
             DataContext = viewModel;
 

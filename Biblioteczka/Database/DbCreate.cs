@@ -41,6 +41,7 @@ namespace Biblioteczka.Database
                 {
                     isCreated = true;
 
+                    // Get an ID of inserted row (newly added book)
                     sqlCommand.CommandText = "SELECT last_insert_rowid();";
                     long bookID = (long)sqlCommand.ExecuteScalar();
 
