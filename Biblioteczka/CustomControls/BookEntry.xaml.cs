@@ -22,11 +22,6 @@ namespace Biblioteczka.CustomControls
     /// </summary>
     public partial class BookEntry : UserControl
     {
-        // Event raised when window with book details has been closed
-        // Functions are being attached to this event in MainWindow class and used to refresh book list
-        public delegate void UpdateView();
-        public event UpdateView DetailsWindowClosed;
-
         BookViewModel viewModel;
 
         public BookEntry(int ordinal, BookViewModel bookViewModel)
@@ -65,6 +60,11 @@ namespace Biblioteczka.CustomControls
 
             openDetailsButton.Visibility = Visibility.Hidden;
         }
+
+        // Event raised when window with book details has been closed
+        // Functions are being attached to this event in MainWindow class and used to refresh book list
+        public delegate void UpdateView();
+        public event UpdateView DetailsWindowClosed;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
