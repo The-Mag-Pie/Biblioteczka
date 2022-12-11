@@ -20,7 +20,7 @@ namespace Biblioteczka.Database
             dbConn.Open();
             while (dbConn.State == System.Data.ConnectionState.Connecting)
             {
-                // waiting
+                // waiting for connection to establish
             }
             return dbConn.State == System.Data.ConnectionState.Open ? dbConn : throw new DbConnectionException();
         }
