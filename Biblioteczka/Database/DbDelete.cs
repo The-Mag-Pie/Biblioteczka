@@ -26,7 +26,9 @@ namespace Biblioteczka.Database
                 cmd.CommandText = sqlDeleteString;
 
                 if (cmd.ExecuteNonQuery() == 1)
+                {
                     isDeleted = true;
+                }
                 else
                 {
                     throw new Exception("Błąd podczas usuwania książki.");

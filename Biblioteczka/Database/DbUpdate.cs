@@ -39,7 +39,9 @@ namespace Biblioteczka.Database
                 cmd.CommandText = sqlUpdateString;
 
                 if (cmd.ExecuteNonQuery() == 1)
+                {
                     isUpdated = true;
+                }
 
                 if (book.Image != null)
                 {

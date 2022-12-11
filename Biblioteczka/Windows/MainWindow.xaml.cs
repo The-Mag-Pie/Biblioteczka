@@ -43,7 +43,9 @@ namespace Biblioteczka.Windows
             string partialSqlString = $"WHERE (Title LIKE '%{searchBox.Text}%' OR Author LIKE '%{searchBox.Text}%')";
 
             if (categoryComboBox.SelectedIndex > 0)
+            {
                 partialSqlString += $" AND Category_ID = (SELECT ID FROM Categories WHERE Name LIKE '{categoryComboBox.SelectedItem}')";
+            }
 
             partialSqlString += " ORDER BY ";
             switch (sortComboBox.SelectedIndex)
