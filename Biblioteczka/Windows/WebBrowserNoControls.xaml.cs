@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Biblioteczka.Windows
 {
-    /// <summary>
-    /// Interaction logic for WebBrowserNoControls.xaml
-    /// </summary>
     public partial class WebBrowserNoControls : Window
     {
         public static void CreateAudiobookWindow(string bookTitle, string uri)

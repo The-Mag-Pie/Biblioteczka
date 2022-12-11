@@ -18,9 +18,6 @@ using System.IO;
 
 namespace Biblioteczka.Windows
 {
-    /// <summary>
-    /// Interaction logic for NewEntry.xaml
-    /// </summary>
     public partial class NewEntry : Window
     {
         BookViewModel viewModel;

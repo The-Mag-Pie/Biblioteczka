@@ -15,9 +15,6 @@ using Biblioteczka.MVVM;
 
 namespace Biblioteczka.Windows
 {
-    /// <summary>
-    /// Interaction logic for BookDetails.xaml
-    /// </summary>
     public partial class BookDetails : Window
     {
         private static readonly string EbookButtonEnabledText = "Dostępny E-book!";
@@ -42,13 +39,12 @@ namespace Biblioteczka.Windows
         private void ConfigureButtons()
         {
             // If property is empty, then the button is blocked for user (disabled).
-            // If property contains some data, then the button is enabled and clickable.
-
             if (viewModel.EbookLink == null)
             {
                 buttonEbook.Content = EbookButtonDisabledText;
                 buttonEbook.IsEnabled = false;
             }
+            // If property contains some data, then the button is enabled and clickable.
             else
             {
                 buttonEbook.Content = EbookButtonEnabledText;

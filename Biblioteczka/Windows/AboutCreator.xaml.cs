@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Biblioteczka.Windows
 {
-    /// <summary>
-    /// Interaction logic for AboutCreator.xaml
-    /// </summary>
     public partial class AboutCreator : Window
     {
         public AboutCreator()

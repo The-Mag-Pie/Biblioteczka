@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Biblioteczka.Windows
 {
-    /// <summary>
-    /// Interaction logic for WebBrowserSelectLink.xaml
-    /// </summary>
     public partial class WebBrowserWithLinkSelection : Window
     {
         public static WebBrowserWithLinkSelection CreateAudiobookWindow(string bookTitle)
