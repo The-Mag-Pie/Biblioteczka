@@ -12,9 +12,50 @@ namespace Biblioteczka.Database
     public static class DbCreate
     {
         public static bool CreateBook(Book book)
+        {   
+            SqliteConnection dbConn = null;
+
+            return HandleConnection(dbConn, book);
+        }
+
+        private static bool HandleConnection(SqliteConnection dbConn, Book book)
         {
-            bool isCreated = false;
-            string sqlInsertString =
+            try
+            {
+                dbConn = DbConnection.CreateConnection();
+                SqliteCommand sqlCommand = dbConn.CreateCommand();
+
+                TryInsertBook(book, sqlCommand, dbConn);
+
+                dbConn.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                dbConn?.Close();
+                return false;
+            }
+        }
+
+        private static void TryInsertBook(Book book, SqliteCommand sqlCommand, SqliteConnection dbConn)
+        {
+            if (ExecuteCommand(GenerateSqlString(book), sqlCommand) == 1)
+            {
+                // Get an ID of inserted row (newly added book)
+                book.ID = GetLastInsertedRowID(sqlCommand);
+
+                UploadImage(book, dbConn);
+            }
+            else
+            {
+                throw new Exception("Błąd podczas tworzenia nowej książki.");
+            }
+        }
+
+        private static string GenerateSqlString(Book book)
+        {
+            return 
                 $@"
                     INSERT INTO Books (Title, Author, Description, EbookLink, AudiobookLink, MovieLink, Image, Category_ID) VALUES (
                         '{book.Title}',
@@ -27,46 +68,26 @@ namespace Biblioteczka.Database
                         (SELECT ID From Categories WHERE Name LIKE '{book.CategoryName}')
                     );
                 ";
+        }
 
-            SqliteConnection dbConn = null;
+        private static int ExecuteCommand(string commandText, SqliteCommand sqlCommand)
+        {
+            sqlCommand.CommandText = commandText;
+            return sqlCommand.ExecuteNonQuery();
+        }
 
-            try
+        private static long GetLastInsertedRowID(SqliteCommand sqlCommand)
+        {
+            sqlCommand.CommandText = "SELECT last_insert_rowid();";
+            return (long)sqlCommand.ExecuteScalar();
+        }
+
+        private static void UploadImage(Book book, SqliteConnection dbConn)
+        {
+            if (book.Image != null)
             {
-                dbConn = DbConnection.CreateConnection();
-
-                SqliteCommand sqlCommand = dbConn.CreateCommand();
-
-                sqlCommand.CommandText = sqlInsertString;
-                if (sqlCommand.ExecuteNonQuery() == 1)
-                {
-                    isCreated = true;
-
-                    // Get an ID of inserted row (newly added book)
-                    sqlCommand.CommandText = "SELECT last_insert_rowid();";
-                    long bookID = (long)sqlCommand.ExecuteScalar();
-
-                    if (book.Image != null)
-                    {
-                        DbConnection.UploadImageBlob(book.Image, dbConn, bookID);
-                    }
-
-                    book.ID = bookID;
-                }
-                else
-                {
-                    throw new Exception("Błąd podczas tworzenia nowej książki.");
-                }
+                DbConnection.UploadImageBlob(book.Image, dbConn, book.ID);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                isCreated = false;
-            }
-            finally
-            {
-                dbConn?.Close();
-            }
-            return isCreated;
         }
     }
 }

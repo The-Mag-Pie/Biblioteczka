@@ -38,27 +38,44 @@ namespace Biblioteczka.CustomControls
         {
             InitializeComponent();
 
+            SetOrdinalHeader();
+            SetAuthorHeader();
+            SetTitleHeader();
+            SetCategoryHeader();
+
+            openDetailsButton.Visibility = Visibility.Hidden;
+        }
+
+        private void SetOrdinalHeader()
+        {
             ordinalLabel.Content = "Lp.";
             ordinalLabel.FontWeight = FontWeights.Bold;
             ordinalLabel.Foreground = Brushes.Black;
             ordinalLabel.FontSize = 14;
+        }
 
+        private void SetAuthorHeader()
+        {
             authorLabel.Text = "Autor";
             authorLabel.FontWeight = FontWeights.Bold;
             authorLabel.Foreground = Brushes.Black;
             authorLabel.FontSize = 14;
+        }
 
+        private void SetTitleHeader()
+        {
             titleLabel.Text = "Tytuł";
             titleLabel.FontWeight = FontWeights.Bold;
             titleLabel.Foreground = Brushes.Black;
             titleLabel.FontSize = 14;
+        }
 
+        private void SetCategoryHeader()
+        {
             categoryLabel.Text = "Gatunek";
             categoryLabel.FontWeight = FontWeights.Bold;
             categoryLabel.Foreground = Brushes.Black;
             categoryLabel.FontSize = 14;
-
-            openDetailsButton.Visibility = Visibility.Hidden;
         }
 
         // Event raised when window with book details has been closed
