@@ -14,7 +14,6 @@ namespace Biblioteczka.Database
         public static bool DeleteBook(Book book)
         {
             bool isDeleted = false;
-            string sqlDeleteString = $"DELETE FROM Books WHERE ID = {book.ID};";
 
             SqliteConnection dbConn = null;
 
@@ -44,6 +43,25 @@ namespace Biblioteczka.Database
                 dbConn?.Close();
             }
             return isDeleted;
+        }
+
+        private static void TryDeleteBook(Book book, SqliteCommand sqlCommand, SqliteConnection dbConn)
+        {
+            if (cmd.ExecuteNonQuery() != 1)
+            {
+                throw new Exception("Błąd podczas usuwania książki.");
+            }
+        }
+
+        private static string GenerateSqlString(Book book)
+        {
+            return $"DELETE FROM Books WHERE ID = {book.ID};";
+        }
+
+        private static int ExecuteCommand(string commandText, SqliteCommand sqlCommand)
+        {
+            sqlCommand.CommandText = commandText;
+            return sqlCommand.ExecuteNonQuery();
         }
     }
 }

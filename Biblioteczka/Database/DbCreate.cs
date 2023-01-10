@@ -12,17 +12,10 @@ namespace Biblioteczka.Database
     public static class DbCreate
     {
         public static bool CreateBook(Book book)
-        {   
-            SqliteConnection dbConn = null;
-
-            return HandleConnection(dbConn, book);
-        }
-
-        private static bool HandleConnection(SqliteConnection dbConn, Book book)
         {
             try
             {
-                dbConn = DbConnection.CreateConnection();
+                using SqliteConnection dbConn = DbConnection.CreateConnection();
                 SqliteCommand sqlCommand = dbConn.CreateCommand();
 
                 TryInsertBook(book, sqlCommand, dbConn);
@@ -33,7 +26,6 @@ namespace Biblioteczka.Database
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                dbConn?.Close();
                 return false;
             }
         }
