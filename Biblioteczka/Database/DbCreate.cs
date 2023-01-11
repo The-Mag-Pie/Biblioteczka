@@ -20,7 +20,6 @@ namespace Biblioteczka.Database
 
                 TryInsertBook(book, sqlCommand, dbConn);
 
-                dbConn.Close();
                 return true;
             }
             catch (Exception ex)

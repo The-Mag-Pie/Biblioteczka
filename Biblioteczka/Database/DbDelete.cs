@@ -13,41 +13,25 @@ namespace Biblioteczka.Database
     {
         public static bool DeleteBook(Book book)
         {
-            bool isDeleted = false;
-
-            SqliteConnection dbConn = null;
-
             try
             {
-                dbConn = DbConnection.CreateConnection();
-
+                using SqliteConnection dbConn = DbConnection.CreateConnection();
                 SqliteCommand cmd = dbConn.CreateCommand();
-                cmd.CommandText = sqlDeleteString;
 
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    isDeleted = true;
-                }
-                else
-                {
-                    throw new Exception("Błąd podczas usuwania książki.");
-                }
+                TryDeleteBook(book, cmd);
+
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                isDeleted = false;
+                return false;
             }
-            finally
-            {
-                dbConn?.Close();
-            }
-            return isDeleted;
         }
 
-        private static void TryDeleteBook(Book book, SqliteCommand sqlCommand, SqliteConnection dbConn)
+        private static void TryDeleteBook(Book book, SqliteCommand sqlCommand)
         {
-            if (cmd.ExecuteNonQuery() != 1)
+            if (ExecuteCommand(GenerateSqlString(book), sqlCommand) != 1)
             {
                 throw new Exception("Błąd podczas usuwania książki.");
             }

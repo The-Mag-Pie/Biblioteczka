@@ -14,8 +14,40 @@ namespace Biblioteczka.Database
     {
         public static bool UpdateBook(Book book)
         {
-            bool isUpdated = false;
-            string sqlUpdateString =
+            try
+            {
+                using SqliteConnection dbConn = DbConnection.CreateConnection();
+                SqliteCommand cmd = dbConn.CreateCommand();
+
+                TryUpdateBook(book, cmd, dbConn);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private static void TryUpdateBook(Book book, SqliteCommand sqlCommand, SqliteConnection dbConn)
+        {
+            if (ExecuteCommand(GenerateSqlString(book), sqlCommand) == 1)
+            {
+                if (book.Image != null)
+                {
+                    DbConnection.UploadImageBlob(book.Image, dbConn, book.ID);
+                }
+            }
+            else
+            {
+                throw new Exception("Błąd podczas aktualizowania danych książki.");
+            }
+        }
+
+        private static string GenerateSqlString(Book book)
+        {
+            return
                 $@"
                     UPDATE Books SET
                         Title = '{book.Title}',
@@ -28,36 +60,12 @@ namespace Biblioteczka.Database
                         Category_ID = (SELECT ID From Categories WHERE Name LIKE '{book.CategoryName}')
                     WHERE ID = {book.ID};
                 ";
+        }
 
-            SqliteConnection dbConn = null;
-
-            try
-            {
-                dbConn = DbConnection.CreateConnection();
-
-                SqliteCommand cmd = dbConn.CreateCommand();
-                cmd.CommandText = sqlUpdateString;
-
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    isUpdated = true;
-                }
-
-                if (book.Image != null)
-                {
-                    DbConnection.UploadImageBlob(book.Image, dbConn, book.ID);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                isUpdated = false;
-            }
-            finally
-            {
-                dbConn?.Close();
-            }
-            return isUpdated;
+        private static int ExecuteCommand(string commandText, SqliteCommand sqlCommand)
+        {
+            sqlCommand.CommandText = commandText;
+            return sqlCommand.ExecuteNonQuery();
         }
     }
 }
