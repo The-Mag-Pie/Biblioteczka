@@ -16,9 +16,9 @@ namespace Biblioteczka.Database
             try
             {
                 using SqliteConnection dbConn = DbConnection.CreateConnection();
-                SqliteCommand cmd = dbConn.CreateCommand();
+                SqliteCommand sqlCommand = dbConn.CreateCommand();
 
-                TryDeleteBook(book, cmd);
+                TryDeleteBook(book, sqlCommand);
 
                 return true;
             }

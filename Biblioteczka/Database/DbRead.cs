@@ -13,14 +13,15 @@ namespace Biblioteczka.Database
 {
     public static class DbRead
     {
+        // partialSqlString parameter contains optional sort and order SQL clauses (can be empty)
         public static List<Book> GetBooks(string partialSqlString)
         {
             try
             {
                 using SqliteConnection dbConn = DbConnection.CreateConnection();
-                SqliteCommand cmd = dbConn.CreateCommand();
+                SqliteCommand sqlCommand = dbConn.CreateCommand();
 
-                return GetBooksListFromDatabase(cmd, partialSqlString);
+                return GetBooksListFromDatabase(sqlCommand, partialSqlString);
             }
             catch (Exception ex)
             {
@@ -29,13 +30,12 @@ namespace Biblioteczka.Database
             }
         }
 
-        // partialSqlString parameter contains optional sort and order SQL clauses (can be empty)
-        private static List<Book> GetBooksListFromDatabase(SqliteCommand cmd, string partialSqlString)
+        private static List<Book> GetBooksListFromDatabase(SqliteCommand sqlCommand, string partialSqlString)
         {
             var list = new List<Book>();
 
             string cmdText = "SELECT *, (SELECT Name FROM Categories WHERE ID = B.Category_ID) AS CategoryName FROM Books B " + partialSqlString;
-            var reader = GetDataReader(cmdText, cmd);
+            var reader = GetDataReader(cmdText, sqlCommand);
 
             while (reader != null && reader.Read())
             {
@@ -70,12 +70,12 @@ namespace Biblioteczka.Database
             }
         }
 
-        private static List<string> GetCategoriesListFromDatabase(SqliteCommand cmd)
+        private static List<string> GetCategoriesListFromDatabase(SqliteCommand sqlCommand)
         {
             var list = new List<string>();
 
             string cmdText = "SELECT Name FROM Categories;";
-            var reader = GetDataReader(cmdText, cmd);
+            var reader = GetDataReader(cmdText, sqlCommand);
 
             while (reader != null && reader.Read())
             {
@@ -84,10 +84,10 @@ namespace Biblioteczka.Database
             return list;
         }
 
-        private static SqliteDataReader GetDataReader(string commandText, SqliteCommand cmd)
+        private static SqliteDataReader GetDataReader(string commandText, SqliteCommand sqlCommand)
         {
-            cmd.CommandText = commandText;
-            return cmd.ExecuteReader();
+            sqlCommand.CommandText = commandText;
+            return sqlCommand.ExecuteReader();
         }
 
         public static BitmapImage ByteArrayToImage(byte[] bytes)
