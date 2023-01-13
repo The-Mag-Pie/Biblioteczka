@@ -28,13 +28,23 @@ namespace Biblioteczka.Windows
         {
             InitializeComponent();
 
+            LoadViewModel(bookViewModel);
+
+            LoadCategories();
+        }
+
+        private void LoadViewModel(BookViewModel bookViewModel)
+        {
             mainViewModel = bookViewModel;
             // Clone model to not overwrite data before updating in database
             // so that the data in the app is consistent with the data in the database
             // in case of cancelling the edition
             viewModel = bookViewModel.Clone();
             DataContext = viewModel;
+        }
 
+        private void LoadCategories()
+        {
             bookCategoriesList.ItemsSource = DbRead.GetCategories();
             bookCategoriesList.SelectedItem = viewModel.CategoryName;
         }

@@ -26,9 +26,19 @@ namespace Biblioteczka.Windows
         {
             InitializeComponent();
 
+            LoadViewModel();
+
+            LoadCategories();
+        }
+
+        private void LoadViewModel()
+        {
             viewModel = new BookViewModel(new Book());
             DataContext = viewModel;
+        }
 
+        private void LoadCategories()
+        {
             bookCategory.ItemsSource = DbRead.GetCategories();
             ((List<string>)bookCategory.ItemsSource).Insert(0, "Wybierz kategorię...");
             bookCategory.SelectedIndex = 0;
