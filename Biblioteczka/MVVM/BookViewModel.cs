@@ -13,6 +13,8 @@ namespace Biblioteczka.MVVM
 {
     public class BookViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         Book _book;
 
         public BookViewModel(Book book)
@@ -119,13 +121,6 @@ namespace Biblioteczka.MVVM
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public BookViewModel Clone()
         {
             Book clonedBook = new Book();
@@ -184,6 +179,11 @@ namespace Biblioteczka.MVVM
             {
                 MessageBox.Show("Błąd podczas usuwania książki!");
             }
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

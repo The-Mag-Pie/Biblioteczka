@@ -17,7 +17,14 @@ namespace Biblioteczka.Windows
 {
     public partial class BookDetails : Window
     {
-        BookViewModel viewModel;
+        private static readonly string EbookButtonEnabledText = "Dostępny E-book!";
+        private static readonly string EbookButtonDisabledText = "E-book niedostępny";
+        private static readonly string AudiobookButtonEnabledText = "Dostępny Audiobook!";
+        private static readonly string AudiobookButtonDisabledText = "Audiobook niedostępny";
+        private static readonly string FilmButtonEnabledText = "Dostępna adaptacja filmowa!";
+        private static readonly string FilmButtonDisabledText = "Adapacja filmowa niedostępna";
+
+        private BookViewModel viewModel;
 
         public BookDetails(BookViewModel bookViewModel)
         {
@@ -28,13 +35,6 @@ namespace Biblioteczka.Windows
 
             ConfigureButtons();
         }
-
-        private static readonly string EbookButtonEnabledText = "Dostępny E-book!";
-        private static readonly string EbookButtonDisabledText = "E-book niedostępny";
-        private static readonly string AudiobookButtonEnabledText = "Dostępny Audiobook!";
-        private static readonly string AudiobookButtonDisabledText = "Audiobook niedostępny";
-        private static readonly string FilmButtonEnabledText = "Dostępna adaptacja filmowa!";
-        private static readonly string FilmButtonDisabledText = "Adapacja filmowa niedostępna";
 
         private void ConfigureButtons()
         {

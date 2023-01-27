@@ -12,6 +12,11 @@ namespace Biblioteczka.Database
 {
     public static class DbConnection
     {
+        public sealed class DbConnectionException : Exception
+        {
+            public DbConnectionException() : base("Error during connecting to database.") { }
+        }
+
         public static SqliteConnection CreateConnection()
         {
             string dbFilePath = $"{Environment.CurrentDirectory}\\Resources\\database.db";
@@ -23,11 +28,6 @@ namespace Biblioteczka.Database
                 // waiting for connection to establish
             }
             return dbConn.State == System.Data.ConnectionState.Open ? dbConn : throw new DbConnectionException();
-        }
-
-        public sealed class DbConnectionException : Exception
-        {
-            public DbConnectionException() : base("Error during connecting to database.") { }
         }
 
         public static void UploadImageBlob(BitmapImage image, SqliteConnection dbConnection, long rowID)
