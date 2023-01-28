@@ -42,5 +42,39 @@ namespace BiblioteczkaTests
             Assert.Contains(title, browser_audiobook.Title);
             Assert.Equal("https://librivox.org/", browser_audiobook.SavedLink);
         }
+
+        [StaFact]
+        public void Test_EbookBrowser()
+        {
+            string title = "Przykładowy tytuł okna ebook";
+            var browser_ebook = WebBrowserWithLinkSelection.CreateEbookWindow(title);
+            while (browser_ebook.IsVisible == false)
+            {
+                // waiting for window to be visible
+            }
+
+            var saveButton = (Button)browser_ebook.FindName("buttonSave");
+            saveButton.RaiseEvent(new System.Windows.RoutedEventArgs(Button.ClickEvent));
+
+            Assert.Contains(title, browser_ebook.Title);
+            Assert.Equal("https://1lib.pl/", browser_ebook.SavedLink);
+        }
+
+        [StaFact]
+        public void Test_FilmAdaptationBrowser()
+        {
+            string title = "Przykładowy tytuł okna ebook";
+            var browser_film_adaptation = WebBrowserWithLinkSelection.CreateFilmAdaptationWindow(title);
+            while (browser_film_adaptation.IsVisible == false)
+            {
+                // waiting for window to be visible
+            }
+
+            var saveButton = (Button)browser_film_adaptation.FindName("buttonSave");
+            saveButton.RaiseEvent(new System.Windows.RoutedEventArgs(Button.ClickEvent));
+
+            Assert.Contains(title, browser_film_adaptation.Title);
+            Assert.Equal("https://www.filmweb.pl/", browser_film_adaptation.SavedLink);
+        }
     }
 }
