@@ -19,21 +19,21 @@ namespace Biblioteczka.Windows
         public static WebBrowserWithLinkSelection CreateAudiobookWindow(string bookTitle)
         {
             WebBrowserWithLinkSelection browser = new WebBrowserWithLinkSelection(bookTitle + " - Znajdź audiobook", new Uri("https://librivox.org/"));
-            browser.ShowDialog();
+            browser.Show();
             return browser;
         }
 
         public static WebBrowserWithLinkSelection CreateEbookWindow(string bookTitle)
         {
             WebBrowserWithLinkSelection browser = new WebBrowserWithLinkSelection(bookTitle + " - Znajdź e-book", new Uri("https://1lib.pl/"));
-            browser.ShowDialog();
+            browser.Show();
             return browser;
         }
 
         public static WebBrowserWithLinkSelection CreateFilmAdaptationWindow(string bookTitle)
         {
             WebBrowserWithLinkSelection browser = new WebBrowserWithLinkSelection(bookTitle + " - Znajdź adaptację filmową", new Uri("https://www.filmweb.pl/"));
-            browser.ShowDialog();
+            browser.Show();
             return browser;
         }
 

@@ -1,11 +1,13 @@
 ﻿using Biblioteczka.MVVM;
+using Biblioteczka.Windows;
+using System.Windows.Controls;
 
 namespace BiblioteczkaTests
 {
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void Test_ViewModelCloning()
         {
             var book = new Book()
             {
@@ -22,6 +24,23 @@ namespace BiblioteczkaTests
             var clonedBook = viewModel.Clone().Book;
 
             Assert.Equivalent(book, clonedBook, strict: true);
+        }
+
+        [StaFact]
+        public void Test_AudiobookBrowser()
+        {
+            string title = "Przykładowy tytuł okna audiobook";
+            var browser_audiobook = WebBrowserWithLinkSelection.CreateAudiobookWindow(title);
+            while (browser_audiobook.IsVisible == false)
+            {
+                // waiting for window to be visible
+            }
+
+            var saveButton = (Button)browser_audiobook.FindName("buttonSave");
+            saveButton.RaiseEvent(new System.Windows.RoutedEventArgs(Button.ClickEvent));
+
+            Assert.Contains(title, browser_audiobook.Title);
+            Assert.Equal("https://librivox.org/", browser_audiobook.SavedLink);
         }
     }
 }
